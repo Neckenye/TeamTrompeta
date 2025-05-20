@@ -5,8 +5,8 @@ using System.Threading;
 
 namespace TcGame
 {
-  public class Hud : Actor
-  {
+    public class Hud : Actor
+    {
         public int time = 120;
         public int pointsColected;
         private Text txt;
@@ -15,16 +15,16 @@ namespace TcGame
         {
             Layer = ELayer.Hud;
             Font f = new Font("Data/Fonts/LuckiestGuy.ttf");
-            txt = new Text("",f);
+            txt = new Text("", f);
             timer = new Text("", f);
             txt.Position = new Vector2f(10, 10);
             txt.FillColor = Color.White;
             txt.DisplayedString = ($"Points Colected: {pointsColected}");
-            timer.Position = new Vector2f(Engine.Get.Window.Size.X -50, 10);
+            timer.Position = new Vector2f(Engine.Get.Window.Size.X - 50, 10);
             timer.FillColor = Color.White;
             timer.DisplayedString = ($"{time}");
         }
-        
+
         public override void Update(float dt)
         {
             Console.Clear();
@@ -34,7 +34,6 @@ namespace TcGame
 
             base.Update(dt);
             SetText();
-
         }
 
         public void SetText()
