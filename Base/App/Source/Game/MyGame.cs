@@ -11,6 +11,8 @@ namespace TcGame
     public Hud hud { private set; get; }
     public Background background { get;  private set;}
     private static MyGame instance;
+    public Front Front { get; private set; }
+    public ObjectToCollect ObjectToCollect { get; private set; }
     public static MyGame Get
     {
       get
@@ -30,6 +32,8 @@ namespace TcGame
     {
       background = Engine.Get.Scene.Create<Background>();
       hud = Engine.Get.Scene.Create<Hud>();
+      Front = Engine.Get.Scene.Create<Front>();
+     ObjectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
     }
     //Hola
 
