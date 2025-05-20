@@ -33,9 +33,7 @@ namespace TcGame
     }
     //Hola
 
-    // tigre
-
-    // puma
+    //Estoy hasta las pelotas de los comentarios
     public void DeInit()
     {
     }
