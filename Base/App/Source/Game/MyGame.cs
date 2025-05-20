@@ -33,7 +33,8 @@ namespace TcGame
 
         }
         //Hola
-        // FELIPE LOTAS
+
+        //Felipe Lotas
         public void DeInit()
         {
         }
