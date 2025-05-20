@@ -32,6 +32,10 @@ namespace TcGame
       hud = Engine.Get.Scene.Create<Hud>();
     }
     //Hola
+
+    // PINGUINO
+
+    // TIGRE
     public void DeInit()
     {
     }
