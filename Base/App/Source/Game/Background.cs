@@ -8,7 +8,7 @@ namespace TcGame
     {
         public Background()
         {
-            Layer = ELayer.Middle;
+            Layer = ELayer.Background;
             Sprite = new Sprite(new Texture("Data/Textures/Background.png"));
 
         }
