@@ -31,7 +31,7 @@ namespace TcGame
       background = Engine.Get.Scene.Create<Background>();
       hud = Engine.Get.Scene.Create<Hud>();
     }
-       //Hola
+    //Hola
     public void DeInit()
     {
     }
