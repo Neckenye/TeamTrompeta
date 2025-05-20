@@ -32,6 +32,10 @@ namespace TcGame
       hud = Engine.Get.Scene.Create<Hud>();
     }
     //Hola
+
+    // Salchi
+
+    // Baljit
     public void DeInit()
     {
     }
