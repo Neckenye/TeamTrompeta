@@ -10,8 +10,7 @@ namespace TcGame
         
     public Hud hud { private set; get; }
     public Background background { get;  private set;}
-        public Front Front { get; private set; }
-        private static MyGame instance;
+    private static MyGame instance;
     public static MyGame Get
     {
       get
@@ -30,9 +29,8 @@ namespace TcGame
     public void Init()
     {
       background = Engine.Get.Scene.Create<Background>();
-      Front = Engine.Get.Scene.Create<Front>();
-
-        }
+      hud = Engine.Get.Scene.Create<Hud>();
+    }
        //Hola
     public void DeInit()
     {
