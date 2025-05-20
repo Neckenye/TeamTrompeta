@@ -33,8 +33,7 @@ namespace TcGame
     }
     //Hola
 
-    //Estoy hasta las pelotas de los comentarios
-    // Albondigas
+    //Comentario de mierda ya
 
     public void DeInit()
     {
