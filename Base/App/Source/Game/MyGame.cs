@@ -33,9 +33,9 @@ namespace TcGame
     }
     //Hola
 
-    // Salchi
+    // Rojo
 
-    // Baljit
+    // Amarillo
     public void DeInit()
     {
     }
