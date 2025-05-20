@@ -5,49 +5,46 @@ using System;
 
 namespace TcGame
 {
-    public class MyGame : Game
+  public class MyGame : Game
+  {
+        
+    public Hud hud { private set; get; }
+    public Background background { get;  private set;}
+    private static MyGame instance;
+    public static MyGame Get
     {
-        public Hud hud { private set; get; }
-        public Background background { get; private set; }
-        public ObjectToCollect objectToCollect { get; private set; }
-        private static MyGame instance;
-        public static MyGame Get
+      get
+      {
+        if (instance == null)
         {
-            get
-            {
-                if (instance == null)
-                {
-                    instance = new MyGame();
-                }
-
-                return instance;
-            }
-        }
-        private MyGame()
-        {
-        }
-        public void Init()
-        {
-            background = Engine.Get.Scene.Create<Background>();
-            objectToCollect = new ObjectToCollect();
-
-        }
-        //Hola
-
-        //Felipe Lotas
-        public void DeInit()
-        {
-        }
-        public void Update(float dt)
-        {
-
+          instance = new MyGame();
         }
 
-        private void DestroyAll<T>() where T : Actor
-        {
-            var actors = Engine.Get.Scene.GetAll<T>();
-            actors.ForEach(x => x.Destroy());
-        }
+        return instance;
+      }
     }
+    private MyGame()
+    {
+    }
+    public void Init()
+    {
+      background = Engine.Get.Scene.Create<Background>();
+      hud = Engine.Get.Scene.Create<Hud>();
+    }
+    //Hola
+    public void DeInit()
+    {
+    }
+    public void Update(float dt)
+    {
+            
+      
+    }
+    private void DestroyAll<T>() where T : Actor
+    {
+      var actors = Engine.Get.Scene.GetAll<T>();
+      actors.ForEach(x => x.Destroy());
+    }
+  }
 }
 
