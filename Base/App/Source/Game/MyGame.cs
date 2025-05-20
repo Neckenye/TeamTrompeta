@@ -33,7 +33,7 @@ namespace TcGame
     }
     //Hola
 
-    // Albondigas
+    // Zimbabwe
     public void DeInit()
     {
     }
