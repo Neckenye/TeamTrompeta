@@ -32,6 +32,8 @@ namespace TcGame
       hud = Engine.Get.Scene.Create<Hud>();
     }
     //Hola
+
+    // Esto del Github es un mierdon historico
     public void DeInit()
     {
     }
