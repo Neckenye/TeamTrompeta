@@ -2,6 +2,7 @@
 using SFML.System;
 using SFML.Window;
 using System;
+using System.Diagnostics.Contracts;
 
 namespace TcGame
 {
@@ -10,6 +11,7 @@ namespace TcGame
         
     public Hud hud { private set; get; }
     public Background background { get;  private set;}
+    public GameOverScreen gameOverScreen { get; private set;}
     private static MyGame instance;
     public static MyGame Get
     {
@@ -28,7 +30,8 @@ namespace TcGame
     }
     public void Init()
     {
-      background = Engine.Get.Scene.Create<Background>();
+      gameOverScreen = Engine.Get.Scene.Create<GameOverScreen>();
+
       
     }
        //Hola
