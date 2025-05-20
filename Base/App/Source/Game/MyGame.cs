@@ -32,6 +32,8 @@ namespace TcGame
       hud = Engine.Get.Scene.Create<Hud>();
     }
        //Hola
+
+       // Comentario de mierda 3
     public void DeInit()
     {
     }
