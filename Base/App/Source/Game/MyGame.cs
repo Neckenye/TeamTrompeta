@@ -33,9 +33,7 @@ namespace TcGame
     }
     //Hola
 
-    // tigre
-
-    // puma
+    // Albondigas
     public void DeInit()
     {
     }
