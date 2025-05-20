@@ -33,9 +33,9 @@ namespace TcGame
     }
     //Hola
 
-    // Rojo
+    // tigre
 
-    // Amarillo
+    // puma
     public void DeInit()
     {
     }
