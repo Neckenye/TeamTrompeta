@@ -18,7 +18,6 @@ namespace TcGame
             Layer = ELayer.Middle;
             Position = new Vector2f(0f, 0f);
             Origin = new Vector2f(GetLocalBounds().Width / 2.0f, GetLocalBounds().Height / 2.0f);
-            
         }
 
         public override void Update(float dt)

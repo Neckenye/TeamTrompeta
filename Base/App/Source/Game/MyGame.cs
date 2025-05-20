@@ -5,12 +5,13 @@ using System;
 
 namespace TcGame
 {
- 
+    public class MyGame : Game
     {
         public ObjectToCollect objectToCollect { private set; get; }
         public Front front { private set; get; }
         public Hud hud { private set; get; }
         public Background background { get; private set; }
+
         private static MyGame instance;
         public static MyGame Get
         {
@@ -24,6 +25,7 @@ namespace TcGame
                 return instance;
             }
         }
+
         private MyGame()
         {
         }
@@ -52,33 +54,6 @@ namespace TcGame
             actors.ForEach(x => x.Destroy());
         }
     }
-    private MyGame()
-    {
-    }
-    public void Init()
-    {
-      background = Engine.Get.Scene.Create<Background>();
-      hud = Engine.Get.Scene.Create<Hud>();
-      Front = Engine.Get.Scene.Create<Front>();
-     ObjectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
-    }
-    //Hola
-
-    // Zimbabwe
-    public void DeInit()
-    {
-    }
-    public void Update(float dt)
-    {
-            
-      
-    }
-    private void DestroyAll<T>() where T : Actor
-    {
-      var actors = Engine.Get.Scene.GetAll<T>();
-      actors.ForEach(x => x.Destroy());
-    }
-  }
 }
 
 
