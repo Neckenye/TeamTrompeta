@@ -6,6 +6,7 @@ using System.Threading.Tasks;
 using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace TcGame
 { 
@@ -14,11 +15,14 @@ namespace TcGame
         private Sprite sprite;
         public ObjectToCollect()
         {
+            Layer = ELayer.Front;
             sprite = new Sprite(new Texture("Data/Textures/Object/Coin.png"));
-            Layer = ELayer.Middle;
-            Position = new Vector2f(200f, 200f);
+            Position = new Vector2f(Engine.Get.Window.Size.X / 2, Engine.Get.Window.Size.Y / 2);
         }
 
-
+        public override void Update(float dt)
+        {
+            base.Update(dt);
+        }
     }
 }
