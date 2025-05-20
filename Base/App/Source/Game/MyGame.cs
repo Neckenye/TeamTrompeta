@@ -33,9 +33,9 @@ namespace TcGame
     }
     //Hola
 
-    // Salchi
+    // tigre
 
-    // Baljit
+    // puma
     public void DeInit()
     {
     }
