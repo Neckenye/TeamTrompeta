@@ -33,23 +33,23 @@ namespace TcGame
         private MyGame()
         {
         }
+
         public void Init()
         {
             background = Engine.Get.Scene.Create<Background>();
             hud = Engine.Get.Scene.Create<Hud>();
             front = Engine.Get.Scene.Create<Front>();
             timer = 0f;
-            objectList = Engine.Get.Scene.Create<ObjectToCollect>();
 
-            ObjectToCollect first = new ObjectToCollect();
+            ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
             objectList.Add(first);
         }
-        //Hola
 
         public void DeInit()
         {
 
         }
+
         public void Update(float dt)
         {
             hud.Update(dt);
@@ -59,11 +59,12 @@ namespace TcGame
             if (timer > 5)
             {
                 timer = 0f;
-                objectList.Add(new ObjectToCollect());
+                objectList.Add(Engine.Get.Scene.Create<ObjectToCollect>());
             }
 
             if (objectList.Count > 3)
             {
+                objectList[0].Destroy();
                 objectList.RemoveAt(0);
             }
         }
@@ -75,5 +76,6 @@ namespace TcGame
         }
     }
 }
+
 
 
