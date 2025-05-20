@@ -140,7 +140,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
     <None Update="Data\Fonts\LuckiestGuy.ttf">
-      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
     <None Update="Data\foreground.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
