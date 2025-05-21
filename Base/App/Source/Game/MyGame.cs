@@ -15,8 +15,8 @@ namespace TcGame
 
         private static MyGame instance;
 
-        //public static float timeLeft = 120f;
-        public static float timeLeft = 2;  //PER SABER SI VA
+        public static float timeLeft = 120f;
+        //public static float timeLeft = 2;  //PER SABER SI VA
 
 
         public static bool timeOver = false;

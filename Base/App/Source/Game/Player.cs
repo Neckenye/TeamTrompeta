@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using System.Collections.Generic;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 
@@ -11,7 +12,7 @@ namespace TcGame
         public Front()
         {
             Layer = ELayer.Front;
-            Sprite = new Sprite(new Texture("Data/Textures/Player/Plane.png"));
+            Sprite = new Sprite(new Texture("Data/Textures/Player/TrumpetHand.png"));
         }
 
         public override void Update(float dt)
@@ -28,6 +29,16 @@ namespace TcGame
                 movement.X += speed * dt;
 
             Sprite.Position += movement;
+        }
+
+        private void CheckColission()
+        {
+            List<ObjectToCollect> notes = new List<ObjectToCollect>();
+
+            foreach (ObjectToCollect coin in notes) 
+            {
+             //   if (coin.GetGlobalBounds().Intersects(this.GetGlobalBounds))
+            }
         }
     }
 }

@@ -405,8 +405,4 @@
     </None>
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Data\Textures\Object\" />
-  </ItemGroup>
-
 </Project>
