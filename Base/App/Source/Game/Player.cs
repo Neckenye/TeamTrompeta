@@ -13,7 +13,7 @@ namespace TcGame
             Layer = ELayer.Front;
             Sprite = new Sprite(new Texture("Data/Textures/Player/Plane.png"));
             Position = new Vector2f(Engine.Get.Window.Size.X / 2, Engine.Get.Window.Size.Y / 2);
-            Speed = 20;
+            Speed = 200;
         }
 
        

@@ -24,6 +24,7 @@ namespace TcGame
         //public static float timeLeft = 120f;
         public static float timeLeft = 2;  //PER SABER SI VA
         public static bool timeOver = false;
+        public static float cooldown = 5f;
 
         public static MyGame Get
         {
@@ -48,17 +49,6 @@ namespace TcGame
 
             timer = 0f;
 
-            ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
-            ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
-            ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
-            ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
-
-            objectList.Add(first);
-            objectList.Add(second);
-            objectList.Add(third);
-            objectList.Add(forth);
-
-
             Engine.Get.Scene.Create<TimeTxt>();
         }
         public void DeInit()
@@ -76,16 +66,23 @@ namespace TcGame
                     timeOver = true;
                 }
             }
-            ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
-            ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
-            ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
-            ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
+            cooldown -= dt;
 
-            objectList.Add(first);
-            objectList.Add(second);
-            objectList.Add(third);
-            objectList.Add(forth);
+            if (cooldown < 0)
+            {               
 
+                ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
+                ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
+                ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
+                ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();                
+
+                objectList.Add(first);
+                objectList.Add(second);
+                objectList.Add(third);
+                objectList.Add(forth);
+                cooldown = 5;                
+            }
+           
 
             for (int i = objectList.Count - 1; i >= 0; i--)
             {
