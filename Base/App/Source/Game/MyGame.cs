@@ -84,8 +84,8 @@ namespace TcGame
         {
             ActorSpawner<ObjectToCollect> spawner;
             spawner = Engine.Get.Scene.Create <ActorSpawner<ObjectToCollect>>();
-            spawner.MinPosition = new Vector2f (0, 0);
-            spawner.MaxPosition = new Vector2f (Engine.Get.Window.Size.X, Engine.Get.Window.Size.Y);
+            spawner.MinPosition = new Vector2f (25, 25);
+            spawner.MaxPosition = new Vector2f (Engine.Get.Window.Size.X - 25, Engine.Get.Window.Size.Y - 25);
             spawner.Reset();
         }
 

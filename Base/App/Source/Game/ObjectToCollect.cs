@@ -13,6 +13,7 @@ namespace TcGame
     public class ObjectToCollect : StaticActor
     {
         Random rand = new Random();
+        private float cooldown = 5.0f;
         public ObjectToCollect()
         {
             Sprite = new Sprite(new Texture("Data/Textures/Object/Coin.png"));
@@ -24,6 +25,11 @@ namespace TcGame
         public override void Update(float dt)
         {
             base.Update(dt);
+            cooldown -= dt;
+            if (cooldown <= 0)
+            {
+                Destroy();
+            }
         }
 
         public FloatRect GetLocalBounds()
