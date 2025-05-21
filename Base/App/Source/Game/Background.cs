@@ -4,17 +4,16 @@ using SFML.Window;
 
 namespace TcGame
 {
-    public class Background : StaticActor
+  public class Background : StaticActor
+  {
+    public Background()
     {
-        public Background()
-        {
-            Layer = ELayer.Background;
-            Sprite = new Sprite(new Texture("Data/Textures/Background.png"));
-
-        }
-        public override void Update(float dt)
-        {
-        }
+      Layer = ELayer.Background;
+      Sprite = new Sprite(new Texture("Data/Textures/Background.png"));
     }
+    public override void Update(float dt)
+    {
+    }
+  }
 }
 
