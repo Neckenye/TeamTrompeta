@@ -43,6 +43,7 @@ namespace TcGame
         private void CheckCollision()
         {
             List<ObjectToCollect> lcoin = Engine.Get.Scene.GetAll<ObjectToCollect>();
+
             foreach (ObjectToCollect coin in lcoin)
             {
                 if (coin.GetGlobalBounds().Intersects(this.GetGlobalBounds()))
