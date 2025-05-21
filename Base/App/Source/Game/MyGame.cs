@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using App.Source.Game;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 using System;
@@ -13,6 +14,17 @@ namespace TcGame
         public Background background { get; private set; }
 
         private static MyGame instance;
+
+        //public static float timeLeft = 120f;
+        public static float timeLeft = 2;  //PER SABER SI VA
+
+
+        public static bool timeOver = false;
+
+    
+
+
+
         public static MyGame Get
         {
             get
@@ -35,6 +47,9 @@ namespace TcGame
             hud = Engine.Get.Scene.Create<Hud>();
             front = Engine.Get.Scene.Create<Front>();
             objectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
+
+            Engine.Get.Scene.Create<TimeTxt>();
+
         }
         //Hola
 
@@ -44,6 +59,18 @@ namespace TcGame
         }
         public void Update(float dt)
         {
+            if (!timeOver)
+            {
+                timeLeft -= dt;
+
+                if (timeLeft <= 0f)
+                {
+                    timeLeft = 0f;
+                    timeOver = true;
+                }
+            }
+
+
             hud.Update(dt);
             objectToCollect.Update(dt);
         }
@@ -53,6 +80,8 @@ namespace TcGame
             var actors = Engine.Get.Scene.GetAll<T>();
             actors.ForEach(x => x.Destroy());
         }
+
+
     }
 }
 
