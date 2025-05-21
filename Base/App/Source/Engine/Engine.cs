@@ -45,11 +45,17 @@ namespace TcGame
 
     public float Time;
 
-    private void Init()
+        //veure fps
+        private float fpsTimer = 0f;
+        private int frameCount = 0;
+
+        private void Init()
     {
       VideoMode videoMode = new VideoMode(1024, 768);
       Window = new RenderWindow(videoMode, "Arkanoid");
-      Window.SetVerticalSyncEnabled(true);
+            Window.SetFramerateLimit(60);
+            Window.SetVerticalSyncEnabled(true);
+
 
       SoundMgr = new SoundManager();
       Scene = new Scene();
@@ -72,8 +78,17 @@ namespace TcGame
       Scene.Update(dt);
       SoundMgr.Update(dt);
 
-      Time += dt;
-    }
+            fpsTimer += dt;
+
+            Time += dt;
+
+            if (fpsTimer >= 1.0f)
+            {
+                Console.WriteLine($"FPS: {frameCount}");
+                fpsTimer = 0f;
+                frameCount = 0;
+            }
+        }
 
     private void Draw()
     {
