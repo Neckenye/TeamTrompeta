@@ -18,10 +18,8 @@ namespace TcGame
 
         private static MyGame instance;
 
-        <<<<<<< HEAD
+      
 
-
-=======
         //public static float timeLeft = 120f;
         public static float timeLeft = 2;  //PER SABER SI VA
 
@@ -32,7 +30,7 @@ namespace TcGame
 
 
 
->>>>>>> crosan
+
         public static MyGame Get
         {
             get
@@ -55,7 +53,7 @@ namespace TcGame
             background = Engine.Get.Scene.Create<Background>();
             hud = Engine.Get.Scene.Create<Hud>();
             front = Engine.Get.Scene.Create<Front>();
-<<<<<<< HEAD
+
             timer = 0f;
 
             ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
@@ -67,9 +65,7 @@ namespace TcGame
             objectList.Add(second);
             objectList.Add(third);
             objectList.Add(forth);
-=======
-
-            objectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
+                      
 
             Engine.Get.Scene.Create<TimeTxt>();
         }
