@@ -8,8 +8,6 @@ namespace TcGame
 {
     public class Player : StaticActor
     {
-
-
         public Player()
         {
             Layer = ELayer.Front;
@@ -32,7 +30,7 @@ namespace TcGame
             {
                 Forward = new Vector2f(1, Forward.Y).Normal();
             }
-            if (Keyboard.IsKeyPressed(Keyboard.Key.W) && (Position.Y >= 0 + GetGlobalBounds().Height / 6w))
+            if (Keyboard.IsKeyPressed(Keyboard.Key.W) && (Position.Y >= 0 + GetGlobalBounds().Height / 6))
             {
                 Forward = new Vector2f(Forward.X, -1).Normal();
             }
