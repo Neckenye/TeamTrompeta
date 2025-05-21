@@ -2,58 +2,29 @@
 using SFML.System;
 using SFML.Window;
 using System;
-<<<<<<< HEAD
-using System.Diagnostics.Contracts;
-=======
+using App.Source.Game;
 using System.Collections.Generic;
->>>>>>> parent of 178cbcb (Merge branch 'main' of https://github.com/Neckenye/TeamTrompeta)
+using System.Numerics;
+using static System.Net.Mime.MediaTypeNames;
+using System.Threading;
 
 namespace TcGame
 {
-  public class MyGame : Game
-  {
-        
-    public Hud hud { private set; get; }
-    public Background background { get;  private set;}
-    public GameOverScreen gameOverScreen { get; private set;}
-    private static MyGame instance;
-    public static MyGame Get
+    public class MyGame : Game
     {
-      get
-      {
-        if (instance == null)
-        {
-          instance = new MyGame();
-        }
+        public Hud hud { private set; get; }
+        public List<ObjectToCollect> objectList = new List<ObjectToCollect>();
+        public ObjectToCollect objectToCollect { private set; get; }
+        public Player player { private set; get; }
+        public TimeTxt timeTxt { private set; get; }
+        public Background background { get; private set; }
+        private static MyGame instance;
 
-        return instance;
-      }
-    }
-    private MyGame()
-    {
-    }
-    public void Init()
-    {
-      gameOverScreen = Engine.Get.Scene.Create<GameOverScreen>();
-
-<<<<<<< HEAD
-      
-=======
-        <<<<<<< HEAD
-
-
-=======
+        private float timer;
         //public static float timeLeft = 120f;
         public static float timeLeft = 2;  //PER SABER SI VA
-
-
         public static bool timeOver = false;
 
-    
-
-
-
->>>>>>> crosan
         public static MyGame Get
         {
             get
@@ -66,17 +37,15 @@ namespace TcGame
                 return instance;
             }
         }
-
         private MyGame()
         {
         }
-
         public void Init()
         {
             background = Engine.Get.Scene.Create<Background>();
             hud = Engine.Get.Scene.Create<Hud>();
-            front = Engine.Get.Scene.Create<Front>();
-<<<<<<< HEAD
+            player = Engine.Get.Scene.Create<Player>();
+
             timer = 0f;
 
             ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
@@ -88,18 +57,13 @@ namespace TcGame
             objectList.Add(second);
             objectList.Add(third);
             objectList.Add(forth);
-=======
 
-            objectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
 
             Engine.Get.Scene.Create<TimeTxt>();
         }
-
         public void DeInit()
         {
-
         }
-
         public void Update(float dt)
         {
             if (!timeOver)
@@ -112,66 +76,32 @@ namespace TcGame
                     timeOver = true;
                 }
             }
+            ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
+            ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
+            ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
+            ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
+
+            objectList.Add(first);
+            objectList.Add(second);
+            objectList.Add(third);
+            objectList.Add(forth);
 
 
-            hud.Update(dt);
-
-            timer += dt;
-
-            if (timer > 5)
+            for (int i = objectList.Count - 1; i >= 0; i--)
             {
-                objectList[0].Destroy();
-                objectList[1].Destroy();
-                objectList[2].Destroy();
-                objectList[3].Destroy();
-                objectList.RemoveAll(x => x != null);
-                timer = 0f;
-
-                ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
-                ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
-                ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
-                ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
-
-                objectList.Add(first);
-                objectList.Add(second);
-                objectList.Add(third);
-                objectList.Add(forth);
-            }
-
-            if (objectList.Count > 4)
-            {
-                for (int i = 0; i < 4; i++)
+                objectList[i].Update(dt);
+                if (player.GetGlobalBounds().Intersects(objectList[i].GetGlobalBounds()))
                 {
-                    objectList[i].Destroy();
                     objectList.RemoveAt(i);
                 }
-                
+
             }
         }
-
         private void DestroyAll<T>() where T : Actor
         {
             var actors = Engine.Get.Scene.GetAll<T>();
             actors.ForEach(x => x.Destroy());
         }
-
-
->>>>>>> parent of 178cbcb (Merge branch 'main' of https://github.com/Neckenye/TeamTrompeta)
     }
-       //Hola
-    public void DeInit()
-    {
-    }
-    public void Update(float dt)
-    {
-            
-      
-    }
-    private void DestroyAll<T>() where T : Actor
-    {
-      var actors = Engine.Get.Scene.GetAll<T>();
-      actors.ForEach(x => x.Destroy());
-    }
-  }
 }
 
