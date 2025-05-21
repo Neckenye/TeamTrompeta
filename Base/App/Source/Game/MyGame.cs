@@ -4,6 +4,7 @@ using SFML.System;
 using SFML.Window;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace TcGame
 {
@@ -18,10 +19,8 @@ namespace TcGame
 
         private static MyGame instance;
 
-        <<<<<<< HEAD
+      
 
-
-=======
         //public static float timeLeft = 120f;
         public static float timeLeft = 2;  //PER SABER SI VA
 
@@ -32,7 +31,7 @@ namespace TcGame
 
 
 
->>>>>>> crosan
+
         public static MyGame Get
         {
             get
@@ -55,7 +54,7 @@ namespace TcGame
             background = Engine.Get.Scene.Create<Background>();
             hud = Engine.Get.Scene.Create<Hud>();
             front = Engine.Get.Scene.Create<Front>();
-<<<<<<< HEAD
+
             timer = 0f;
 
             ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
@@ -67,9 +66,7 @@ namespace TcGame
             objectList.Add(second);
             objectList.Add(third);
             objectList.Add(forth);
-=======
-
-            objectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
+                      
 
             Engine.Get.Scene.Create<TimeTxt>();
         }
@@ -97,7 +94,7 @@ namespace TcGame
 
             timer += dt;
 
-            if (timer > 5)
+            if (timer > 7)
             {
                 objectList[0].Destroy();
                 objectList[1].Destroy();
@@ -117,14 +114,13 @@ namespace TcGame
                 objectList.Add(forth);
             }
 
-            if (objectList.Count > 4)
+            for (int i = objectList.Count - 1; i >= 0; i--)
             {
-                for (int i = 0; i < 4; i++)
+                objectList[i].Update(dt);
+                if (front.GetGlobalBounds().Intersects(objectList[i].GetGlobalBounds()))
                 {
-                    objectList[i].Destroy();
                     objectList.RemoveAt(i);
                 }
-                
             }
         }
 
