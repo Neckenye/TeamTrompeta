@@ -12,14 +12,14 @@ namespace TcGame
 {
     public class PantallaNegraVision : StaticActor
     {
-        public float time = 2f;
+        public float time = 7f;
 
         private Sprite cuadradoGigante;
 
 
         public PantallaNegraVision()
         {
-            Layer = ELayer.Vision;
+            Layer = ELayer.Middle;
 
             cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/nigga.png"));
             cuadradoGigante.Scale = cuadradoGigante.Scale * 8;
@@ -34,6 +34,10 @@ namespace TcGame
         public override void Draw(RenderTarget target, RenderStates states)
         {
             if (time <= 0)
+            {
+                time = 7f;
+            }
+            else if (time <= 5)
             {
                 target.Draw(cuadradoGigante);
             }

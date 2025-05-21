@@ -7,7 +7,7 @@ namespace TcGame
 {   
     public class Hud : Actor
     {
-        public float time = 200f;
+        public float time = 120f;
         public int pointsColected;
 
         private Text noTimeTxt;

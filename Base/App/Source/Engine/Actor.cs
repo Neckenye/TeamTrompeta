@@ -18,8 +18,7 @@ namespace TcGame
             Back,
             Middle,
             Front,
-            Hud,
-            Vision
+            Hud
         }
         public ELayer Layer { get; set; }
         protected Actor()

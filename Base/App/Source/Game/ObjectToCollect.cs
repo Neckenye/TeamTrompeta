@@ -17,7 +17,7 @@ namespace TcGame
         public ObjectToCollect()
         {
             Sprite = new Sprite(new Texture("Data/Textures/Object/Coin.png"));
-            Layer = ELayer.Middle;
+            Layer = ELayer.Back;
             Position = new Vector2f(rand.Next(30, (int)Engine.Get.Window.Size.X-30), rand.Next(30, (int)Engine.Get.Window.Size.Y-30));            
             Sprite.Scale = new Vector2f(0.1f, 0.1f);
         }
