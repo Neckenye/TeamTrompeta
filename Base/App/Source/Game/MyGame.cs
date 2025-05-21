@@ -2,11 +2,12 @@
 using SFML.System;
 using SFML.Window;
 using System;
-using App.Source.Game;
 using System.Collections.Generic;
 using System.Numerics;
 using static System.Net.Mime.MediaTypeNames;
 using System.Threading;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace TcGame
 {
@@ -16,7 +17,6 @@ namespace TcGame
         public List<ObjectToCollect> objectList = new List<ObjectToCollect>();
         public ObjectToCollect objectToCollect { private set; get; }
         public Player player { private set; get; }
-        public TimeTxt timeTxt { private set; get; }
         public Background background { get; private set; }
         private static MyGame instance;
 
@@ -46,16 +46,18 @@ namespace TcGame
             background = Engine.Get.Scene.Create<Background>();
             hud = Engine.Get.Scene.Create<Hud>();
             player = Engine.Get.Scene.Create<Player>();
+            CreateCoinSpawner();
 
             timer = 0f;
 
-            Engine.Get.Scene.Create<TimeTxt>();
+                       
         }
         public void DeInit()
         {
         }
         public void Update(float dt)
         {
+
             if (!timeOver)
             {
                 timeLeft -= dt;
@@ -66,31 +68,8 @@ namespace TcGame
                     timeOver = true;
                 }
             }
-            cooldown -= dt;
-
-            if (cooldown < 0)
-            {                
-                foreach (var obj in objectList)
-                {
-                    obj.Destroy();
-                }
-                objectList.Clear();
-                
-                ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
-                ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
-                ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
-                ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
-
-                objectList.Add(first);
-                objectList.Add(second);
-                objectList.Add(third);
-                objectList.Add(forth);
-
-                cooldown = 5;
-            }
-
-
-
+            cooldown -= dt;            
+            
             for (int i = objectList.Count - 1; i >= 0; i--)
             {
                 objectList[i].Update(dt);
@@ -101,6 +80,15 @@ namespace TcGame
 
             }
         }
+        private void CreateCoinSpawner()
+        {
+            ActorSpawner<ObjectToCollect> spawner;
+            spawner = Engine.Get.Scene.Create <ActorSpawner<ObjectToCollect>>();
+            spawner.MinPosition = new Vector2f (0, 0);
+            spawner.MaxPosition = new Vector2f (Engine.Get.Window.Size.X, Engine.Get.Window.Size.Y);
+            spawner.Reset();
+        }
+
         private void DestroyAll<T>() where T : Actor
         {
             var actors = Engine.Get.Scene.GetAll<T>();

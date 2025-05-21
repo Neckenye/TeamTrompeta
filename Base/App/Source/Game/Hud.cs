@@ -7,16 +7,19 @@ namespace TcGame
 {   
     public class Hud : Actor
     {
-        public int time = 120;
+        public float time = 120f;
         public int pointsColected;
+        private Text noTimeTxt;
         private Text txt;
         private Text timer;
         public Hud()
         {
             Layer = ELayer.Hud;
-            Font f = new Font("Data/Fonts/georgia.ttf");
+            Font f = new Font("Data/Fonts/LuckiestGuy.ttf");
             txt = new Text("", f);
             timer = new Text("", f);
+            noTimeTxt = new Text("GAME OVER", f);
+            noTimeTxt.FillColor = Color.Red;
             txt.Position = new Vector2f(10, 10);
             txt.FillColor = Color.White;
             txt.DisplayedString = ($"Points Colected: {pointsColected}");
@@ -34,12 +37,14 @@ namespace TcGame
 
             base.Update(dt);
             SetText();
+
+            time -= dt;
         }
 
         public void SetText()
         {
             txt.DisplayedString = ($"Points Colected: {pointsColected}");
-            timer.DisplayedString = ($"{time}");
+            timer.DisplayedString = ($"{time:F0}");
         }
 
         public void AddPoint()
@@ -50,6 +55,11 @@ namespace TcGame
         {
             target.Draw(txt);
             target.Draw(timer);
+            
+            if (time >= 121)
+            {
+                target.Draw(noTimeTxt);
+            }
         }
     }
 }
