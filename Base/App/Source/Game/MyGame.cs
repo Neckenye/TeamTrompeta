@@ -94,7 +94,7 @@ namespace TcGame
 
             timer += dt;
 
-            if (timer > 5)
+            if (timer > 7)
             {
                 objectList[0].Destroy();
                 objectList[1].Destroy();
