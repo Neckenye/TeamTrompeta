@@ -3,6 +3,7 @@ using SFML.System;
 using SFML.Window;
 using System;
 using System.Collections.Generic;
+using System.Numerics;
 
 namespace TcGame
 {
@@ -84,14 +85,13 @@ namespace TcGame
                 objectList.Add(forth);
             }
 
-            if (objectList.Count > 4)
+            for (int i = objectList.Count - 1; i >= 0; i--)
             {
-                for (int i = 0; i < 4; i++)
+                objectList[i].Update(dt);
+                if (front.GetGlobalBounds().Intersects(objectList[i].GetGlobalBounds()))
                 {
-                    objectList[i].Destroy();
                     objectList.RemoveAt(i);
                 }
-                
             }
         }
 
