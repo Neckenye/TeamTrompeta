@@ -16,8 +16,8 @@ namespace TcGame
         private float cooldown = 5.0f;
         public ObjectToCollect()
         {
-            Sprite = new Sprite(new Texture("Data/Textures/Object/BlueNote.png"));
-            Layer = ELayer.Middle;
+            Sprite = new Sprite(new Texture("Data/Textures/Object/Coin.png"));
+            Layer = ELayer.Back;
             Position = new Vector2f(rand.Next(30, (int)Engine.Get.Window.Size.X-30), rand.Next(30, (int)Engine.Get.Window.Size.Y-30));            
             Sprite.Scale = new Vector2f(0.1f, 0.1f);
         }

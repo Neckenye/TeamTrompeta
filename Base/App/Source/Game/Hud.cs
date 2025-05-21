@@ -9,10 +9,13 @@ namespace TcGame
     {
         public float time = 120f;
         public int pointsColected;
+
         private Text noTimeTxt;
         private Text txt;
         private Text timer;
         private Sprite cuadradoGigante;
+        
+
         public Hud()
         {
             Layer = ELayer.Hud;
@@ -43,10 +46,6 @@ namespace TcGame
 
         public override void Update(float dt)
         {
-
-            Console.WriteLine(Position);
-            Console.WriteLine(txt);
-
             base.Update(dt);
             SetText();
 
@@ -67,7 +66,8 @@ namespace TcGame
         {
             target.Draw(txt);
             target.Draw(timer);
-            
+
+
             if (time <= 0)
             {
                 target.Draw(cuadradoGigante);

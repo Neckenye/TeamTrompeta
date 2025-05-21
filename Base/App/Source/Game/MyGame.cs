@@ -1,29 +1,31 @@
-﻿using App.Source.Game;
-using SFML.Graphics;
+﻿using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 using System;
+using System.Collections.Generic;
+using System.Numerics;
+using static System.Net.Mime.MediaTypeNames;
+using System.Threading;
+using System.Runtime.InteropServices;
+using System.Runtime.CompilerServices;
 
 namespace TcGame
 {
     public class MyGame : Game
     {
-        public ObjectToCollect objectToCollect { private set; get; }
-        public Front front { private set; get; }
         public Hud hud { private set; get; }
+        public List<ObjectToCollect> objectList = new List<ObjectToCollect>();
+        public ObjectToCollect objectToCollect { private set; get; }
+        public Player player { private set; get; }
         public Background background { get; private set; }
-
+        public PantallaNegraVision vision { private set; get; }
         private static MyGame instance;
 
-        public static float timeLeft = 120f;
-        //public static float timeLeft = 2;  //PER SABER SI VA
-
-
+        private float timer;
+        //public static float timeLeft = 120f;
+        public static float timeLeft = 120;  //PER SABER SI VA
         public static bool timeOver = false;
-
-    
-
-
+        public static float cooldown = 5f;
 
         public static MyGame Get
         {
@@ -37,7 +39,6 @@ namespace TcGame
                 return instance;
             }
         }
-
         private MyGame()
         {
         }
@@ -45,34 +46,39 @@ namespace TcGame
         {
             background = Engine.Get.Scene.Create<Background>();
             hud = Engine.Get.Scene.Create<Hud>();
-            front = Engine.Get.Scene.Create<Front>();
-            objectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
+            player = Engine.Get.Scene.Create<Player>();
+            vision = Engine.Get.Scene.Create<PantallaNegraVision>();
+            CreateCoinSpawner();
 
-            Engine.Get.Scene.Create<TimeTxt>();
-
+            timer = 0f;
         }
-        //Hola
-
         public void DeInit()
         {
-
         }
         public void Update(float dt)
         {
-            if (!timeOver)
+            /*
+            for (int i = objectList.Count - 1; i >= 0; i--)
             {
-                timeLeft -= dt;
-
-                if (timeLeft <= 0f)
+                objectList[i].Update(dt);
+                if (player.GetGlobalBounds().Intersects(objectList[i].GetGlobalBounds()))
                 {
-                    timeLeft = 0f;
-                    timeOver = true;
+                    objectList.RemoveAt(i);
                 }
-            }
+            }*/
 
-
-            hud.Update(dt);
-            objectToCollect.Update(dt);
+            /*if (player.GetGlobalBounds().Intersects(objectToCollect.GetGlobalBounds()))
+            {
+                hud.AddPoint();
+            }*/
+        }
+        private void CreateCoinSpawner()
+        {
+            ActorSpawner<ObjectToCollect> spawner;
+            spawner = Engine.Get.Scene.Create <ActorSpawner<ObjectToCollect>>();
+            spawner.MinPosition = new Vector2f (25, 25);
+            spawner.MaxPosition = new Vector2f (Engine.Get.Window.Size.X - 25, Engine.Get.Window.Size.Y - 25);
+            spawner.Reset();
         }
 
         private void DestroyAll<T>() where T : Actor
@@ -80,9 +86,6 @@ namespace TcGame
             var actors = Engine.Get.Scene.GetAll<T>();
             actors.ForEach(x => x.Destroy());
         }
-
-
     }
 }
-
 
