@@ -2,7 +2,11 @@
 using SFML.System;
 using SFML.Window;
 using System;
+<<<<<<< HEAD
 using System.Diagnostics.Contracts;
+=======
+using System.Collections.Generic;
+>>>>>>> parent of 178cbcb (Merge branch 'main' of https://github.com/Neckenye/TeamTrompeta)
 
 namespace TcGame
 {
