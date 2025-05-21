@@ -69,20 +69,27 @@ namespace TcGame
             cooldown -= dt;
 
             if (cooldown < 0)
-            {               
-
+            {                
+                foreach (var obj in objectList)
+                {
+                    obj.Destroy();
+                }
+                objectList.Clear();
+                
                 ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
                 ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
                 ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
-                ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();                
+                ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
 
                 objectList.Add(first);
                 objectList.Add(second);
                 objectList.Add(third);
                 objectList.Add(forth);
-                cooldown = 5;                
+
+                cooldown = 5;
             }
-           
+
+
 
             for (int i = objectList.Count - 1; i >= 0; i--)
             {
