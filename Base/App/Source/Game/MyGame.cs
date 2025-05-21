@@ -49,8 +49,6 @@ namespace TcGame
             CreateCoinSpawner();
 
             timer = 0f;
-
-                       
         }
         public void DeInit()
         {

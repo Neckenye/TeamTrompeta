@@ -30,7 +30,6 @@ namespace TcGame
 
         public override void Update(float dt)
         {
-            Console.Clear();
 
             Console.WriteLine(Position);
             Console.WriteLine(txt);
