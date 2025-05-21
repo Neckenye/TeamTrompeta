@@ -25,20 +25,22 @@ namespace TcGame
         public override void Update(float dt)
         {
             base.Update(dt);
+            /*
             cooldown -= dt;
             if (cooldown <= 0)
             {
                 Destroy();
             }
+            */
         }
 
-        public FloatRect GetLocalBounds()
+        /*public FloatRect GetLocalBounds()
         {
             return Sprite.GetLocalBounds();
         }
         public FloatRect GetGlobalBounds()
         {
             return Transform.TransformRect(GetLocalBounds());
-        }
+        }*/
     }
 }

@@ -22,7 +22,7 @@ namespace TcGame
 
         private float timer;
         //public static float timeLeft = 120f;
-        public static float timeLeft = 2;  //PER SABER SI VA
+        public static float timeLeft = 120;  //PER SABER SI VA
         public static bool timeOver = false;
         public static float cooldown = 5f;
 
@@ -54,20 +54,8 @@ namespace TcGame
         {
         }
         public void Update(float dt)
-        {
-
-            if (!timeOver)
-            {
-                timeLeft -= dt;
-
-                if (timeLeft <= 0f)
-                {
-                    timeLeft = 0f;
-                    timeOver = true;
-                }
-            }
-            cooldown -= dt;            
-            
+        {            
+            /*
             for (int i = objectList.Count - 1; i >= 0; i--)
             {
                 objectList[i].Update(dt);
@@ -75,8 +63,7 @@ namespace TcGame
                 {
                     objectList.RemoveAt(i);
                 }
-
-            }
+            }*/
         }
         private void CreateCoinSpawner()
         {

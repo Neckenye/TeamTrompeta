@@ -8,7 +8,7 @@ namespace TcGame
     public class ActorSpawner<T> : Actor where T : Actor, new()
     {
 
-        public float MaxTime = 5.0f;
+        public float MaxTime = 7.0f;
         public Vector2f MinPosition;
         public Vector2f MaxPosition;
         private float coolDown = 0f;

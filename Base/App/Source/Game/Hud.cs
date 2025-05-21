@@ -12,20 +12,33 @@ namespace TcGame
         private Text noTimeTxt;
         private Text txt;
         private Text timer;
+        private Sprite cuadradoGigante;
         public Hud()
         {
             Layer = ELayer.Hud;
             Font f = new Font("Data/Fonts/LuckiestGuy.ttf");
+
+            cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/nigga.png"));
+            cuadradoGigante.Scale = cuadradoGigante.Scale * 8;
+
             txt = new Text("", f);
             timer = new Text("", f);
             noTimeTxt = new Text("GAME OVER", f);
-            noTimeTxt.FillColor = Color.Red;
+
+            noTimeTxt.Origin = new Vector2f(GetLocalBounds().Width, GetLocalBounds().Height) / 2.0f;
+            noTimeTxt.Scale = noTimeTxt.Scale * 3;
+
             txt.Position = new Vector2f(10, 10);
-            txt.FillColor = Color.White;
-            txt.DisplayedString = ($"Points Colected: {pointsColected}");
             timer.Position = new Vector2f(Engine.Get.Window.Size.X - 50, 10);
-            timer.FillColor = Color.White;
+            noTimeTxt.Position = new Vector2f(Engine.Get.Window.Size.X / 2 - 230, Engine.Get.Window.Size.Y / 2 - 50);
+
+            txt.DisplayedString = ($"Points Colected: {pointsColected}");
             timer.DisplayedString = ($"{time}");
+
+            noTimeTxt.FillColor = Color.Red;
+            txt.FillColor = Color.White;
+            timer.FillColor = Color.White;
+
         }
 
         public override void Update(float dt)
@@ -55,8 +68,9 @@ namespace TcGame
             target.Draw(txt);
             target.Draw(timer);
             
-            if (time >= 121)
+            if (time <= 0)
             {
+                target.Draw(cuadradoGigante);
                 target.Draw(noTimeTxt);
             }
         }
