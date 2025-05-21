@@ -18,6 +18,9 @@ namespace TcGame
         {
             Vector2f movement = new Vector2f(0f, 0f);
 
+            if (MyGame.timeOver)
+                return;
+
             if (Keyboard.IsKeyPressed(Keyboard.Key.W))
                 movement.Y -= speed * dt;
             if (Keyboard.IsKeyPressed(Keyboard.Key.S))

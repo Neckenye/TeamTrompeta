@@ -14,13 +14,18 @@ namespace App.Source.Game
         private Text timeTxt;
         private Font font;
 
+        private RectangleShape backgroundGameOver;
+
         public TimeTxt()
         {
             //txt game over
             font = new Font("Data/Fonts/LuckiestGuy.ttf");
             noTimeTxt = new Text("PERRO SANCHES HA DIMITIDO.", font, 60); // TEXT DE GAME OVER AQUIII
             noTimeTxt.FillColor = Color.Red;
-            noTimeTxt.Position = new SFML.System.Vector2f(200, 300);
+            //centrat
+            FloatRect bounds = noTimeTxt.GetLocalBounds();
+            noTimeTxt.Origin = new SFML.System.Vector2f(bounds.Width / 2, bounds.Height / 2);
+            noTimeTxt.Position = new SFML.System.Vector2f(1024 / 2, 768 / 2);
             Layer = ELayer.Hud;
 
             //txt temps regresivo
@@ -28,6 +33,10 @@ namespace App.Source.Game
             timeTxt.FillColor = Color.White;
             timeTxt.Position = new SFML.System.Vector2f(20, 20);
             Layer = ELayer.Hud;
+
+            //pantalla negre
+            backgroundGameOver = new RectangleShape(new SFML.System.Vector2f(1024, 768));
+            backgroundGameOver.FillColor = new Color(0, 0, 0, 200);
         }
 
         public override void Update(float dt)
@@ -47,6 +56,7 @@ namespace App.Source.Game
             }
             else 
             {
+                target.Draw(blackOverlay, states);  
                 target.Draw(noTimeTxt, states);
             }
         }
