@@ -14,7 +14,7 @@ namespace TcGame
         public Hud()
         {
             Layer = ELayer.Hud;
-            Font f = new Font("Data/Fonts/LuckiestGuy.ttf");
+            Font f = new Font("Data/Fonts/georgia.ttf");
             txt = new Text("", f);
             timer = new Text("", f);
             txt.Position = new Vector2f(10, 10);

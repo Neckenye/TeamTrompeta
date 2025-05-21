@@ -1,4 +1,5 @@
-﻿using SFML.Graphics;
+﻿using App.Source.Game;
+using SFML.Graphics;
 using SFML.System;
 using SFML.Window;
 using System;
@@ -18,6 +19,21 @@ namespace TcGame
 
         private static MyGame instance;
 
+        <<<<<<< HEAD
+
+
+=======
+        //public static float timeLeft = 120f;
+        public static float timeLeft = 2;  //PER SABER SI VA
+
+
+        public static bool timeOver = false;
+
+    
+
+
+
+>>>>>>> crosan
         public static MyGame Get
         {
             get
@@ -40,6 +56,7 @@ namespace TcGame
             background = Engine.Get.Scene.Create<Background>();
             hud = Engine.Get.Scene.Create<Hud>();
             front = Engine.Get.Scene.Create<Front>();
+<<<<<<< HEAD
             timer = 0f;
 
             ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
@@ -51,7 +68,11 @@ namespace TcGame
             objectList.Add(second);
             objectList.Add(third);
             objectList.Add(forth);
+=======
 
+            objectToCollect = Engine.Get.Scene.Create<ObjectToCollect>();
+
+            Engine.Get.Scene.Create<TimeTxt>();
         }
 
         public void DeInit()
@@ -61,6 +82,18 @@ namespace TcGame
 
         public void Update(float dt)
         {
+            if (!timeOver)
+            {
+                timeLeft -= dt;
+
+                if (timeLeft <= 0f)
+                {
+                    timeLeft = 0f;
+                    timeOver = true;
+                }
+            }
+
+
             hud.Update(dt);
 
             timer += dt;
@@ -100,6 +133,8 @@ namespace TcGame
             var actors = Engine.Get.Scene.GetAll<T>();
             actors.ForEach(x => x.Destroy());
         }
+
+
     }
 }
 
