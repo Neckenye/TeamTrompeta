@@ -42,7 +42,15 @@ namespace TcGame
             timer = 0f;
 
             ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
+            ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
+            ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
+            ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
+
             objectList.Add(first);
+            objectList.Add(second);
+            objectList.Add(third);
+            objectList.Add(forth);
+
         }
 
         public void DeInit()
@@ -58,14 +66,32 @@ namespace TcGame
 
             if (timer > 5)
             {
+                objectList[0].Destroy();
+                objectList[1].Destroy();
+                objectList[2].Destroy();
+                objectList[3].Destroy();
+                objectList.RemoveAll(x => x != null);
                 timer = 0f;
-                objectList.Add(Engine.Get.Scene.Create<ObjectToCollect>());
+
+                ObjectToCollect first = Engine.Get.Scene.Create<ObjectToCollect>();
+                ObjectToCollect second = Engine.Get.Scene.Create<ObjectToCollect>();
+                ObjectToCollect third = Engine.Get.Scene.Create<ObjectToCollect>();
+                ObjectToCollect forth = Engine.Get.Scene.Create<ObjectToCollect>();
+
+                objectList.Add(first);
+                objectList.Add(second);
+                objectList.Add(third);
+                objectList.Add(forth);
             }
 
-            if (objectList.Count > 3)
+            if (objectList.Count > 4)
             {
-                objectList[0].Destroy();
-                objectList.RemoveAt(0);
+                for (int i = 0; i < 4; i++)
+                {
+                    objectList[i].Destroy();
+                    objectList.RemoveAt(i);
+                }
+                
             }
         }
 
