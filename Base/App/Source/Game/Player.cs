@@ -11,7 +11,8 @@ namespace TcGame
         public Player()
         {
             Layer = ELayer.Front;
-            Sprite = new Sprite(new Texture("Data/Textures/Player/Plane.png"));
+            Sprite = new Sprite(new Texture("Data/Textures/Player/TrumpetHand.png"));
+            Sprite.Scale = new Vector2f(0.2f, 0.2f);
             Position = new Vector2f (Engine.Get.Window.Size.X/2, Engine.Get.Window.Size.Y/2);
             Speed = 300;
         }

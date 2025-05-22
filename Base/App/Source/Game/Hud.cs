@@ -21,7 +21,7 @@ namespace TcGame
             Layer = ELayer.Hud;
             Font f = new Font("Data/Fonts/LuckiestGuy.ttf");
 
-            cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/nigga.png"));
+            cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/niga2.png"));
             cuadradoGigante.Scale = cuadradoGigante.Scale * 8;
 
             txt = new Text("", f);

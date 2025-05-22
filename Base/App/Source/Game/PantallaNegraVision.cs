@@ -21,7 +21,7 @@ namespace TcGame
         {
             Layer = ELayer.Middle;
 
-            cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/nigga.png"));
+            cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/niga2.png"));
             cuadradoGigante.Scale = cuadradoGigante.Scale * 8;
         }
 
