@@ -25,9 +25,6 @@ namespace TcGame
             if (coolDown < 0.0f)
             {                 
                 SpawnActor();
-                SpawnActor();
-                SpawnActor();
-                SpawnActor();
                 Reset();
             }
         }

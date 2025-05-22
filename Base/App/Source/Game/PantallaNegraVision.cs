@@ -12,7 +12,7 @@ namespace TcGame
 {
     public class PantallaNegraVision : StaticActor
     {
-        public float time = 7f;
+        public float time = 700f;
 
         private Sprite cuadradoGigante;
 
@@ -33,6 +33,10 @@ namespace TcGame
         }
         public override void Draw(RenderTarget target, RenderStates states)
         {
+
+            
+            //Si el tiempo es 0 resetealo, y si es menos de 5 se muestra la pantalla negra
+             
             if (time <= 0)
             {
                 time = 7f;
