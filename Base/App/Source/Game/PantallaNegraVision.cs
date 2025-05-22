@@ -12,17 +12,20 @@ namespace TcGame
 {
     public class PantallaNegraVision : StaticActor
     {
-        public float time = 700f;
+        public float time = 7f;
 
-        private Sprite cuadradoGigante;
+        private Sprite telonNegro;
 
 
         public PantallaNegraVision()
         {
             Layer = ELayer.Middle;
 
-            cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/niga2.png"));
-            cuadradoGigante.Scale = cuadradoGigante.Scale * 8;
+            Texture texture = new Texture("Data/Textures/Hud/niga2.png");
+
+            telonNegro = new Sprite(texture);
+            telonNegro.Scale = telonNegro.Scale * 0.95f;
+
         }
 
         public override void Update(float dt)
@@ -43,7 +46,7 @@ namespace TcGame
             }
             else if (time <= 5)
             {
-                target.Draw(cuadradoGigante);
+                target.Draw(telonNegro);
             }
         }
     }

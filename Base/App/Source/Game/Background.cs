@@ -9,7 +9,6 @@ namespace TcGame
         public Background()
         {
             Layer = ELayer.Background;
-            //Sprite = new Sprite(new Texture("Data/Textures/background.png"));
             
             Texture texture = new Texture("Data/Textures/background.png");
             Sprite = new Sprite(texture);
