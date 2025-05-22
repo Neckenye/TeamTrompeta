@@ -90,7 +90,7 @@ namespace TcGame
         }
         public void RemovePoint()
         {
-            pointsColected--;
+            pointsColected = pointsColected - 3;
         }
         public override void Draw(RenderTarget target, RenderStates states)
         {
