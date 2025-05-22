@@ -4,16 +4,28 @@ using SFML.Window;
 
 namespace TcGame
 {
-  public class Background : StaticActor
-  {
-    public Background()
+    public class Background : StaticActor
     {
-      Layer = ELayer.Background;
-      Sprite = new Sprite(new Texture("Data/Textures/Background.png"));
+        public Background()
+        {
+            Layer = ELayer.Background;
+            
+            Texture texture = new Texture("Data/Textures/background.png");
+            Sprite = new Sprite(texture);
+
+            var textureSize = texture.Size;
+            var windowSize = Engine.Get.Window.Size;
+
+
+            float scaleX = (float)windowSize.X / textureSize.X;
+            float scaleY = (float)windowSize.Y / textureSize.Y;
+
+            Sprite.Scale = new Vector2f(scaleX, scaleY);
+            Position = new Vector2f(0, 0);
+        }
+        public override void Update(float dt)
+        {
+        }
     }
-    public override void Update(float dt)
-    {
-    }
-  }
 }
 
