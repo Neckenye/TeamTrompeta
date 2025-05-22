@@ -13,46 +13,38 @@ namespace TcGame
         {
             Layer = ELayer.Front;
             Sprite = new Sprite(new Texture("Data/Textures/Player/TrumpetHand.png"));
-
             FloatRect localBounds = Sprite.GetLocalBounds();
             Sprite.Origin = new Vector2f(localBounds.Width / 2f, localBounds.Height / 2f);
-
             Position = new Vector2f (Engine.Get.Window.Size.X/2, Engine.Get.Window.Size.Y/2);
-            Speed = 200;
+            Speed = 400;
         }
 
         public override void Update(float dt)
         {
             base.Update(dt);
-            Vector2f direction = new Vector2f(0, 0);
-            float halfWidth = GetGlobalBounds().Width / 2;
-            float halfHeight = GetGlobalBounds().Height / 2;
-            Vector2u windowSize = Engine.Get.Window.Size;
+            
 
-            if (Keyboard.IsKeyPressed(Keyboard.Key.A) && Position.X - halfWidth > 0)
-                direction.X -= 1;
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.D) && Position.X + halfWidth < windowSize.X)
-                direction.X += 1;
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.W) && Position.Y - halfHeight > 0)
-                direction.Y -= 1;
-
-            if (Keyboard.IsKeyPressed(Keyboard.Key.S) && Position.Y + halfHeight < windowSize.Y)
-                direction.Y += 1;
-
-            if (direction != new Vector2f(0, 0))
+            Forward = new Vector2f(0, 0);
+            if (Keyboard.IsKeyPressed(Keyboard.Key.A) && (Position.X >= 0 + GetGlobalBounds().Width / 4))
             {
-                Forward = direction.Normal();
-                Position += Forward * Speed * dt;
+                Forward = new Vector2f(-1, Forward.Y).Normal();
             }
-            else
+            if (Keyboard.IsKeyPressed(Keyboard.Key.D) && (Position.X <= Engine.Get.Window.Size.X - GetGlobalBounds().Width / 4))
             {
-                Forward = new Vector2f(0, 0);
+                Forward = new Vector2f(1, Forward.Y).Normal();
             }
-            Sprite.Position = Position;
+            if (Keyboard.IsKeyPressed(Keyboard.Key.W) && (Position.Y >= 0 + GetGlobalBounds().Height / 4))
+            {
+                Forward = new Vector2f(Forward.X, -1).Normal();
+            }
+            if (Keyboard.IsKeyPressed(Keyboard.Key.S) && (Position.Y <= Engine.Get.Window.Size.Y - GetGlobalBounds().Height / 4))
+            {
+                Forward = new Vector2f(Forward.X, 1).Normal();
+            }
+            
             CheckCollision();
         }
+
         private void CheckCollision()
         {
             List<ObjectToCollect> lcoin = Engine.Get.Scene.GetAll<ObjectToCollect>();
