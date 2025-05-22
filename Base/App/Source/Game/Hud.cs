@@ -50,9 +50,9 @@ namespace TcGame
             timer.DisplayedString = ($"{time}");
 
             noTimeTxt.FillColor = Color.Red;
-            txt.FillColor = Color.White;
-            timer.FillColor = Color.White;
-            puntFinal.FillColor = Color.White;
+            txt.FillColor = Color.Blue;
+            timer.FillColor = Color.Blue;
+            puntFinal.FillColor = Color.Blue;
 
         }
 
