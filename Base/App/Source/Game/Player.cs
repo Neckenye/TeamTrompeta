@@ -3,6 +3,7 @@ using SFML.System;
 using SFML.Window;
 using System.Collections.Generic;
 using System;
+using SFML.Audio;
 
 namespace TcGame
 {
@@ -14,9 +15,7 @@ namespace TcGame
             Sprite = new Sprite(new Texture("Data/Textures/Player/TrumpetHand.png"));
 
             FloatRect localBounds = Sprite.GetLocalBounds();
-            //Sprite.Origin = new Vector2f(localBounds.Width / 2f, localBounds.Height/ 2f);
-            Center();
-            Sprite.Scale = new Vector2f(0.7f, 0.7f);
+            Sprite.Origin = new Vector2f(localBounds.Width / 2f, localBounds.Height / 2f);
 
             Position = new Vector2f (Engine.Get.Window.Size.X/2, Engine.Get.Window.Size.Y/2);
             Speed = 200;
@@ -51,7 +50,7 @@ namespace TcGame
             {
                 Forward = new Vector2f(0, 0);
             }
-
+            Sprite.Position = Position;
             CheckCollision();
         }
         private void CheckCollision()

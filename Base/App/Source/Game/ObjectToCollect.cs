@@ -19,7 +19,7 @@ namespace TcGame
             Sprite = new Sprite(new Texture("Data/Textures/Object/BlueNote.png"));
             Layer = ELayer.Back;
             Position = new Vector2f(rand.Next(30, (int)Engine.Get.Window.Size.X-30), rand.Next(30, (int)Engine.Get.Window.Size.Y-30));            
-            Sprite.Scale = new Vector2f(0.07f, 0.07f);
+            Sprite.Scale = new Vector2f(0.1f, 0.1f);
         }
 
         public override void Update(float dt)
