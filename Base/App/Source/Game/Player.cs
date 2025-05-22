@@ -20,25 +20,33 @@ namespace TcGame
         public override void Update(float dt)
         {
             base.Update(dt);
-          
 
-            Forward = new Vector2f(0, 0);
+
+            Vector2f direction = new Vector2f(0, 0);
+
             if (Keyboard.IsKeyPressed(Keyboard.Key.A) && (Position.X >= 0 + GetGlobalBounds().Width / 6))
             {
-                Forward = new Vector2f(-1, Forward.Y).Normal();
+                direction.X -= 1;
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.D) && (Position.X <= Engine.Get.Window.Size.X - GetGlobalBounds().Width))
             {
-                Forward = new Vector2f(1, Forward.Y).Normal();
+                direction.X += 1;
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.W) && (Position.Y >= 0 + GetGlobalBounds().Height / 6))
             {
-                Forward = new Vector2f(Forward.X, -1).Normal();
+                direction.Y -= 1;
             }
             if (Keyboard.IsKeyPressed(Keyboard.Key.S) && (Position.Y <= Engine.Get.Window.Size.Y - GetGlobalBounds().Height))
             {
-                Forward = new Vector2f(Forward.X, 1).Normal();
+                direction.Y += 1;
             }
+
+            if (direction != new Vector2f(0, 0))
+            {
+                Forward = direction.Normal();
+                Position += Forward * Speed * dt;
+            }
+
             CheckCollision();
         }
         private void CheckCollision()
