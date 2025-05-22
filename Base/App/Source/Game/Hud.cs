@@ -39,8 +39,8 @@ namespace TcGame
             timer.DisplayedString = ($"{time}");
 
             noTimeTxt.FillColor = Color.Red;
-            txt.FillColor = Color.White;
-            timer.FillColor = Color.White;
+            txt.FillColor = Color.Blue;
+            timer.FillColor = Color.Blue;
 
         }
 
