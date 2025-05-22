@@ -7,15 +7,21 @@ namespace TcGame
 {   
     public class Hud : Actor
     {
-        public float time = 120f;
+
+        public float time = 120f; //Este tiempo cuando se acabe será game over
         public int pointsColected;
+        public int finalPoints;
+
+        private bool coinColect = true;
 
         private Text noTimeTxt;
         private Text txt;
+        private Text puntFinal; // Este es el texto de PUNTUACION FINAL
         private Text timer;
-        private Sprite cuadradoGigante;
-        
 
+        private Sprite cuadradoGigante; // Esta es la imagen de fondo del Game over
+       
+        
         public Hud()
         {
             Layer = ELayer.Hud;
@@ -26,10 +32,15 @@ namespace TcGame
 
             txt = new Text("", f);
             timer = new Text("", f);
+            puntFinal = new Text("", f);
             noTimeTxt = new Text("GAME OVER", f);
 
             noTimeTxt.Origin = new Vector2f(GetLocalBounds().Width, GetLocalBounds().Height) / 2.0f;
             noTimeTxt.Scale = noTimeTxt.Scale * 3;
+
+            puntFinal.Origin = new Vector2f(GetLocalBounds().Width, GetLocalBounds().Height) / 2.0f;
+            puntFinal.Position = new Vector2f(Engine.Get.Window.Size.X / 2 - 120, Engine.Get.Window.Size.Y / 2 + 150);
+
 
             txt.Position = new Vector2f(10, 10);
             timer.Position = new Vector2f(Engine.Get.Window.Size.X - 50, 10);
@@ -39,8 +50,9 @@ namespace TcGame
             timer.DisplayedString = ($"{time}");
 
             noTimeTxt.FillColor = Color.Red;
-            txt.FillColor = Color.Blue;
-            timer.FillColor = Color.Blue;
+            txt.FillColor = Color.White;
+            timer.FillColor = Color.White;
+            puntFinal.FillColor = Color.White;
 
         }
 
@@ -50,6 +62,11 @@ namespace TcGame
             SetText();
 
             time -= dt;
+
+            if (coinColect)
+            {
+                finalPoints = pointsColected;
+            }
         }
 
         public void SetText()
@@ -70,8 +87,13 @@ namespace TcGame
 
             if (time <= 0)
             {
+                coinColect = false;
+                puntFinal.DisplayedString = ($"Points Colected: {finalPoints}");
+
                 target.Draw(cuadradoGigante);
                 target.Draw(noTimeTxt);
+                target.Draw(puntFinal);
+
             }
         }
     }
