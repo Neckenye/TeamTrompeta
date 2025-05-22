@@ -105,7 +105,6 @@ namespace TcGame
 
                 target.Draw(cuadradoGigante);
                 target.Draw(gameOverTxt);
-                target.Draw(noCoinsTxt);
                 target.Draw(puntFinal);
             }
             if (pointsColected < 0)
