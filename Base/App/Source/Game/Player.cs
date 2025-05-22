@@ -9,6 +9,10 @@ namespace TcGame
 {
     public class Player : StaticActor
     {
+        SoundBuffer trumpetBuffer = new SoundBuffer("Data/Audio/trumpet1.ogg");
+        SoundBuffer fartBuffer = new SoundBuffer("Data/Audio/fart.ogg");
+        Sound trumpetSound;
+        Sound fartSound;
         public Player()
         {
             Layer = ELayer.Front;
@@ -18,6 +22,9 @@ namespace TcGame
             Position = new Vector2f (Engine.Get.Window.Size.X/2, Engine.Get.Window.Size.Y/2);
             Sprite.Scale = new Vector2f(0.7f, 0.7f);
             Speed = 400;
+
+            trumpetSound = new Sound(trumpetBuffer);
+            fartSound = new Sound(fartBuffer);
         }
 
         public override void Update(float dt)
@@ -58,6 +65,7 @@ namespace TcGame
                     Engine.Get.Scene.Destroy(coin);
                     Hud hud = Engine.Get.Scene.GetFirst<Hud>();
                     hud.AddPoint();
+                    trumpetSound.Play();
                 }
             }
         }
@@ -72,6 +80,7 @@ namespace TcGame
                     Engine.Get.Scene.Destroy(enemies);
                     Hud hud = Engine.Get.Scene.GetFirst<Hud>();
                     hud.RemovePoint();
+                    fartSound.Play();
                 }
             }
         }

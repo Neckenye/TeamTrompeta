@@ -130,6 +130,18 @@
     <None Update="Data\Arkanoid\Textures\Gifts\star.png">
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </None>
+    <None Update="Data\Audio\fart.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Audio\fart.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Audio\trumpet1.mp3">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
+    <None Update="Data\Audio\trumpet1.ogg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </None>
     <None Update="Data\background.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
@@ -421,6 +433,10 @@
     <None Update="Data\throne.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Data\Audio\" />
   </ItemGroup>
 
 </Project>
