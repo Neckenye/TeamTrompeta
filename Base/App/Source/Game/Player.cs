@@ -16,6 +16,7 @@ namespace TcGame
             FloatRect localBounds = Sprite.GetLocalBounds();
             Sprite.Origin = new Vector2f(localBounds.Width / 2f, localBounds.Height / 2f);
             Position = new Vector2f (Engine.Get.Window.Size.X/2, Engine.Get.Window.Size.Y/2);
+            Sprite.Scale = new Vector2f(0.7f, 0.7f);
             Speed = 400;
         }
 
@@ -43,6 +44,7 @@ namespace TcGame
             }
             
             CheckCollision();
+            CheckCollision2();
         }
 
         private void CheckCollision()
@@ -56,6 +58,20 @@ namespace TcGame
                     Engine.Get.Scene.Destroy(coin);
                     Hud hud = Engine.Get.Scene.GetFirst<Hud>();
                     hud.AddPoint();
+                }
+            }
+        }
+        private void CheckCollision2()
+        {
+            List<Paredes> lenemies= Engine.Get.Scene.GetAll<Paredes>();
+
+            foreach (Paredes enemies in lenemies)
+            {
+                if (enemies.GetGlobalBounds().Intersects(this.GetGlobalBounds()))
+                {
+                    Engine.Get.Scene.Destroy(enemies);
+                    Hud hud = Engine.Get.Scene.GetFirst<Hud>();
+                    hud.RemovePoint();
                 }
             }
         }
