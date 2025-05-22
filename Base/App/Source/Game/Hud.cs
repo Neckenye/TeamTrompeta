@@ -7,13 +7,13 @@ namespace TcGame
 {   
     public class Hud : Actor
     {
-        public float time = 120f;
+        public float time = 120f; //Este tiempo cuando se acabe será game over
         public int pointsColected;
 
-        private Text noTimeTxt;
+        private Text noTimeTxt; // Este es el texto de GAME OVER
         private Text txt;
         private Text timer;
-        private Sprite cuadradoGigante;
+        private Sprite cuadradoGigante; // Esta es la imagen de fondo del Game over
         
 
         public Hud()
@@ -22,7 +22,7 @@ namespace TcGame
             Font f = new Font("Data/Fonts/LuckiestGuy.ttf");
 
             cuadradoGigante = new Sprite(new Texture("Data/Textures/Hud/nigga.png"));
-            cuadradoGigante.Scale = cuadradoGigante.Scale * 8;
+            cuadradoGigante.Scale = cuadradoGigante.Scale * 8; //se escala la imagen para hacerla gigante y que tape toda la pantalla
 
             txt = new Text("", f);
             timer = new Text("", f);
@@ -68,7 +68,7 @@ namespace TcGame
             target.Draw(timer);
 
 
-            if (time <= 0)
+            if (time <= 0) // Cuando se acabe el tiempo se muestra el GAME OVER con el gris de fondo
             {
                 target.Draw(cuadradoGigante);
                 target.Draw(noTimeTxt);

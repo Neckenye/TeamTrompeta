@@ -41,6 +41,7 @@ namespace TcGame
         }
         private MyGame()
         {
+
         }
         public void Init()
         {
@@ -48,8 +49,19 @@ namespace TcGame
             hud = Engine.Get.Scene.Create<Hud>();
             player = Engine.Get.Scene.Create<Player>();
             vision = Engine.Get.Scene.Create<PantallaNegraVision>();
+            
+            //----- NO TOCAR NO TOQUEIS LOS HUEVOS ------
+            CreateCoinSpawner();
+            CreateCoinSpawner();
+            CreateCoinSpawner();
             CreateCoinSpawner();
 
+            CreateParedSpawner();
+            //-------------------------------------------
+            /* NO TOCAR NO TOQUEIS LOS HUEVOS, Esto hace 4 COINS y 1 PARED cada 7 segundos. Tienes 2 segundos para
+               ver donde estan las monedas y donde esta la siguiente pared, los otros 5 segundos restantes son para
+               coger las monedas sin chocarte, con una pared negra en el frente, es la gracia del puto juego.
+            */
             timer = 0f;
         }
         public void DeInit()
@@ -78,6 +90,15 @@ namespace TcGame
             spawner = Engine.Get.Scene.Create <ActorSpawner<ObjectToCollect>>();
             spawner.MinPosition = new Vector2f (25, 25);
             spawner.MaxPosition = new Vector2f (Engine.Get.Window.Size.X - 25, Engine.Get.Window.Size.Y - 25);
+            spawner.Reset();
+        }
+
+        private void CreateParedSpawner()
+        {
+            ActorSpawner<Paredes> spawner;
+            spawner = Engine.Get.Scene.Create<ActorSpawner<Paredes>>();
+            spawner.MinPosition = new Vector2f(25, 25);
+            spawner.MaxPosition = new Vector2f(Engine.Get.Window.Size.X - 25, Engine.Get.Window.Size.Y - 25);
             spawner.Reset();
         }
 
