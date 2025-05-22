@@ -14,10 +14,12 @@ namespace TcGame
             Sprite = new Sprite(new Texture("Data/Textures/Player/TrumpetHand.png"));
 
             FloatRect localBounds = Sprite.GetLocalBounds();
-            Sprite.Origin = new Vector2f(localBounds.Width / 2f, 0f);
+            //Sprite.Origin = new Vector2f(localBounds.Width / 2f, localBounds.Height/ 2f);
+            Center();
+            Sprite.Scale = new Vector2f(0.7f, 0.7f);
 
             Position = new Vector2f (Engine.Get.Window.Size.X/2, Engine.Get.Window.Size.Y/2);
-            Speed = 300;
+            Speed = 200;
         }
 
         public override void Update(float dt)
